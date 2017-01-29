@@ -1,0 +1,5 @@
+A = LOAD '/home/acadgild/wordcount.txt' AS (sen:chararray);
+B = FOREACH A GENERATE FLATTEN(TOKENIZE(sen,' ')) as word; 
+C = group B by word;
+D = FOREACH C generate group,COUNT(B);   
+dump D; 
